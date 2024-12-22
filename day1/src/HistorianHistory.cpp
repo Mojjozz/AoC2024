@@ -1,42 +1,6 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <algorithm>
+#include "HistorianHistory.h"
 
-void firstPuzzle(std::vector<int>, std::vector<int>);
-void secondPuzzle(std::vector<int>, std::vector<int>);
-
-int main() {
-	std::ifstream file("/Users/morganjohansson/Documents/AoC2024/day1/resources/Example.txt");
-	if (!file) {
-		std::cerr << "Error opening the file!" << std::endl;
-		return 1;
-	}	
-
-	std::vector<int> column1;
-	std::vector<int> column2;
-
-
-	int value1, value2;
-
-	while (file >> value1 >> value2) {
-		column1.push_back(value1);
-		column2.push_back(value2);
-	}
-	file.close();
-
-	std::sort(column1.begin(), column1.end());
-	std::sort(column2.begin(), column2.end());
-
-	firstPuzzle(column1, column2);
-
-	secondPuzzle(column1, column2);
-
-	return 0;
-}
-
-
-void firstPuzzle(std::vector<int> column1, std::vector<int> column2) {
+void firstPuzzle(std::vector<int>& column1, std::vector<int>& column2) {
 	int acc=0;
 	// Assuming the list are equal
 	for(int i=0; i < column1.size(); i++) {
@@ -49,7 +13,7 @@ void firstPuzzle(std::vector<int> column1, std::vector<int> column2) {
 
 }
 
-void secondPuzzle(std::vector<int> column1, std::vector<int> column2) {
+void secondPuzzle(std::vector<int>& column1, std::vector<int>& column2) {
 	int score=0;
 	for(int i=0; i < column1.size(); i++) {
 		int count=0;
