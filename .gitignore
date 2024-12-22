@@ -3,3 +3,4 @@
 day*/src/*.exe
 day*/src/*.obj
 day*/resources/real*.txt
+build/*
