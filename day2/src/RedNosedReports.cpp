@@ -4,9 +4,10 @@
 #include <string>
 #include <sstream>
 
-int processReport(std::string);
+int processReport(std::vector<int>& level);
+int processReportDampener(std::vector<int>& level);
 int main() {
-    std::ifstream file("D:\\AoC2024\\day2\\resources\\realinput.txt");
+    std::ifstream file("/Users/morganjohansson/Documents/AoC2024/day2/resources/Example.txt");
 
     if (!file) {
         std::cerr << "Error while reading file";
@@ -15,23 +16,32 @@ int main() {
 
     std::string line;
     int safeLevels = 0;
+    int safeLevelsDampener = 0;
     while(std::getline(file, line)) {
-        if(processReport(line) == 0){
-            safeLevels++;
+        std::stringstream ss(line);
+        int number;
+        std::vector<int> level;
+        while(ss >> number) {
+            level.push_back(number);
         }
+
+        if(processReport(level) == 0){
+            safeLevels++;
+            safeLevelsDampener++;
+        }else {
+          if(processReportDampener(level) == 0){
+            safeLevelsDampener++;
+          }
+        }
+        
     }
     std::cout << "Safe reports: " << safeLevels << std::endl;
 }
 
-int processReport(std::string line) {
-        std::stringstream ss(line);
-        int number;
-        std::vector<int> levels;
-        while(ss >> number) {
-            levels.push_back(number);
-        }
-        int num1 = levels.at(0);
-        int num2 = levels.at(1);
+int processReport(std::vector<int>& level) {
+        
+        int num1 = level.at(0);
+        int num2 = level.at(1);
         bool ascending;
         if(num1 < num2){
             ascending=true;
@@ -55,4 +65,17 @@ int processReport(std::string line) {
             }        
         }
         return 0;
+}
+
+int processReportDampener(std::vector<int>& level) {
+        std::vector<int> localCopy = level;
+        for(int i = 0; i < level.size(); i++){
+          int holder = level.at(i);
+          localCopy.erase(i);
+          if(processReport(localCopy==0){
+              return 0;
+          }
+          localCopy.insert(i,i);
+        }
+        return -1;
 }

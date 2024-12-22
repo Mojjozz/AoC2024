@@ -7,7 +7,7 @@ void firstPuzzle(std::vector<int>, std::vector<int>);
 void secondPuzzle(std::vector<int>, std::vector<int>);
 
 int main() {
-	std::ifstream file("D:\\AoC2024\\day1\\resources\\realinput.txt");
+	std::ifstream file("/Users/morganjohansson/Documents/AoC2024/day1/resources/Example.txt");
 	if (!file) {
 		std::cerr << "Error opening the file!" << std::endl;
 		return 1;
