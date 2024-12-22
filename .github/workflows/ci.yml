@@ -8,20 +8,16 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
- 
     - name: Install dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y libgtest-dev
     - name: Create a build directory
       run: mkdir -p build
-      
     - name: Compile
       env:
         CC: clang
@@ -30,8 +26,31 @@ jobs:
         cd build
         cmake ..
         cmake --build . --parallel $(nproc) # Build the project using all available CPU cores
-        
     - name: Run tests
       run: |
         cd build
         ctest --output-on-failure # Run tests and display output if they fail
+  codeql:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    # Initialize codeQL
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: 'cpp'
+    # Build the code for CodeQL analysis
+    - name: Build code with clang and cmake
+      env:
+        CC: clang
+        CXX: clang++
+      run: |
+        mkdir -p build
+        cd build
+        cmake ..
+        cmake --build . --parallel $(nproc)
+    # Perform CodeQL analysis
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
