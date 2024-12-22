@@ -15,7 +15,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Set up CMake
-      run: actions/setup-cmake@v4
+      run: actions/setup-cmake@v3
     - name: Install dependencies
       run: |
         sudo apt-get update
