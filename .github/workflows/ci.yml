@@ -1,0 +1,37 @@
+name: CMake Build and test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+ 
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libgtest-dev
+    - name: Create a build directory
+      run: mkdir -p build
+      
+    - name: Compile
+      env:
+        CC: clang
+        CXX: clang++
+      run: |
+        cd build
+        cmake ..
+        cmake --build . --parallel $(nproc) # Build the project using all available CPU cores
+        
+    - name: Run tests
+      run: |
+        cd build
+        ctest --output-on-failure # Run tests and display output if they fail
