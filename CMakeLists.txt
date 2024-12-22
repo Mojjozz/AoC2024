@@ -24,3 +24,4 @@ file(GLOB_RECURSE ALL_SUBDIRS RELATIVE ${CMAKE_SOURCE_DIR} */src)
 # Add subdirectories for each submodule
 add_subdirectory(day1)
 add_subdirectory(day2)
+add_subdirectory(day3)
