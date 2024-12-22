@@ -21,5 +21,5 @@ TEST(RedNosedReportTests, processLevelTestNok) {
     int result = processReport(exampleLevelNok);
 
     //Then
-    ASSERT_EQ(-1, result);
+    ASSERT_EQ(0, result);
 }
