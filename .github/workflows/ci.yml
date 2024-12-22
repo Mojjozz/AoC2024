@@ -33,6 +33,11 @@ jobs:
   codeql:
     name: CodeQL Analysis
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      packages: read
+      security-events: write
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
