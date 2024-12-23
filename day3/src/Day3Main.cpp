@@ -4,7 +4,7 @@ int main() {
 	namespace fs = std::filesystem;
 	fs::path projectRoot = fs::current_path().parent_path().parent_path();
 	fs::current_path(projectRoot);
-	std::ifstream file("day3/resources/Example.txt");
+	std::ifstream file("day3/resources/realinput.txt");
 
     if (!file) {
         std::cerr << "Error while reading file";
@@ -12,8 +12,13 @@ int main() {
     }
 
     std::string line;
-    std::getline(file, line);
 
-    findValidMultiplications(line);
+    long total;
+    while(std::getline(file, line)) {
+        long result = findValidMultiplications(line);
+        total += result;
+    }
 
+
+    std::cout << "total: " << total << std::endl;
 }
