@@ -2,4 +2,4 @@
 #include <fstream>
 #include <iostream>
 
-void findValidMultiplications(std::string line);
+long findValidMultiplications(std::string line);
