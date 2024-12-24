@@ -15,10 +15,11 @@ int main() {
 
     long total_puzzle1 = 0;
     long total_puzzle2 = 0;
+    bool enabled=true;
     while(std::getline(file, line)) {
         long result = findValidMultiplications(line);
         total_puzzle1 += result;
-        long result2 = findValidMultiplicationsFeature(line);
+        long result2 = findValidMultiplicationsFeature(line, enabled);
         total_puzzle2 += result2;
     }
     std::cout << "total part 1: " << total_puzzle1 << std::endl;

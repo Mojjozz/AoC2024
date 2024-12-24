@@ -15,11 +15,10 @@ long findValidMultiplications(std::string line) {
 }
 
 
-long findValidMultiplicationsFeature(std::string line) {
+long findValidMultiplicationsFeature(std::string line, bool &enabled) {
     std::smatch m;
     long total = 0L;
     std::regex regexp("mul\\(([0-9]+),([0-9]+)\\)|(do\\(\\)|don't\\(\\))");
-    bool enabled = true;
     while(std::regex_search(line, m, regexp)) {
         std::cout << "matched string; " << m[0] << std::endl;
         if(m[0] == "do()"){
