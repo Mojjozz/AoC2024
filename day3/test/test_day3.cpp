@@ -17,9 +17,9 @@ TEST(MullItOverTest, ClearStringFromGarbageAndMultiply) {
 TEST(MullItOverTest, SearchStringAndEnadbleDisableMul) {
    //given
    std::string line = "from()why()?mul(603,692)({select()}] )]-(mul(387,685)who()mul(28,717)who()";
-   
+   bool enabled = true; 
    //when
-   long result = findValidMultiplicationsFeature(line);
+   long result = findValidMultiplicationsFeature(line, enabled);
 
    //then
    ASSERT_EQ(48, result);

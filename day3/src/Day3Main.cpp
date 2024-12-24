@@ -4,7 +4,7 @@ int main() {
 	namespace fs = std::filesystem;
 	fs::path projectRoot = fs::current_path().parent_path().parent_path();
 	fs::current_path(projectRoot);
-	std::ifstream file("day3/resources/Example.txt");
+	std::ifstream file("day3/resources/realinput.txt");
 
     if (!file) {
         std::cerr << "Error while reading file";
@@ -25,3 +25,7 @@ int main() {
     std::cout << "total part 1: " << total_puzzle1 << std::endl;
     std::cout << "total part 2: " << total_puzzle2 << std::endl;
 }
+
+
+
+// might be the right answer: 88802350
