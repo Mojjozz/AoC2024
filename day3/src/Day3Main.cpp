@@ -25,7 +25,3 @@ int main() {
     std::cout << "total part 1: " << total_puzzle1 << std::endl;
     std::cout << "total part 2: " << total_puzzle2 << std::endl;
 }
-
-
-
-// might be the right answer: 88802350
