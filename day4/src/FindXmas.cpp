@@ -18,8 +18,8 @@ int findWord(int r, int c, std::vector<std::string> input) {
     int pos_x = r;
     int pos_y = c;
     for(int i = 0; i < XMAS.size(); i++){
-      // pos_x or pos_y cannot be less than 0
-      if (pos_x < 0 || pos_y < 0) {
+      // pos_x or pos_y cannot be less than 0 or greater than the max number of rows/ cols
+      if (pos_x < 0 || pos_y < 0 || pos_x > input.size()-1 || pos_y > input[0].size()-1) {
         break;
       }
       char letterToFind=XMAS[i];
