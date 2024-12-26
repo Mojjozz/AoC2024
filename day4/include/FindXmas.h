@@ -6,3 +6,5 @@
 
 
 std::string parse_input(std::ifstream &s);
+
+int findWord(int r, int c, std::vector<std::string> input);

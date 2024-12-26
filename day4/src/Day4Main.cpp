@@ -1,4 +1,5 @@
 #include "FindXmas.h"
+#include <sstream>
 
 int main() {
 	namespace fs = std::filesystem;
@@ -20,13 +21,15 @@ int main() {
     while(std::getline(ss, line)) {
         lines.push_back(line);
     }
-
+    int result = 0;
     for(int i = 0; i < lines.size(); i++) {
         for(int j = 0; j < lines[0].size(); j++){
-            std::cout << "i:" << i << " j: " << j << " line[i][j]: " << lines[i][j] << std::endl;
+          if(lines[i][j] == 'X') {
+            result += findWord(i,j,lines);
+          }
         }
     }
-
+    std::cout << "result: " << result << std::endl;
     return 0;
 
 }
