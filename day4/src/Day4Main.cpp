@@ -5,7 +5,7 @@ int main() {
 	namespace fs = std::filesystem;
 	fs::path projectRoot = fs::current_path().parent_path().parent_path();
 	fs::current_path(projectRoot);
-	std::ifstream file("day4/resources/Example.txt");
+	std::ifstream file("day4/resources/realinput.txt");
 
     if (!file) {
         std::cerr << "Error while reading file";
@@ -22,14 +22,19 @@ int main() {
         lines.push_back(line);
     }
     int result = 0;
+    int puzzle2 = 0;
     for(int i = 0; i < lines.size(); i++) {
         for(int j = 0; j < lines[0].size(); j++){
           if(lines[i][j] == 'X') {
             result += findWord(i,j,lines);
-          }
+          } else if(lines[i][j] == 'A') {
+            puzzle2 += findMas(i,j,lines);
         }
+      }
     }
+    
     std::cout << "result: " << result << std::endl;
+    std::cout << "puzzle2: " << puzzle2 << std::endl;
     return 0;
 
 }

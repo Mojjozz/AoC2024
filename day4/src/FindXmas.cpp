@@ -44,3 +44,41 @@ int findWord(int r, int c, std::vector<std::string> input) {
   return acc;
 }
 
+
+bool NW(char NW_char, char SE_char) {
+  if( NW_char == 'M' && SE_char  == 'S'){
+    return true;
+  } else if (NW_char == 'S' && SE_char == 'M') {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+bool NE(char NE_char, char SW_char) {
+  if (NE_char == 'M' && SW_char == 'S') {
+    return true;
+  } else if (NE_char == 'S' && SW_char == 'M') {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+int findMas(int startCord_x, int startCord_y, std::vector<std::string> &input) {
+  if(startCord_x-1 < 0 || startCord_x+1 > input.size() || startCord_y-1 < 0 || startCord_y > input[0].size()){
+    return 0;
+  }
+  char NW_char=input[startCord_x-1][startCord_y-1];
+  char SE_char=input[startCord_x+1][startCord_y+1];
+  char NE_char=input[startCord_x+1][startCord_y-1];
+  char SW_char=input[startCord_x-1][startCord_y+1];
+  
+  if (NW(NW_char, SE_char) && NE(NE_char, SW_char)) {
+    return 1;
+  }else {
+    return 0;
+  }
+}
+
