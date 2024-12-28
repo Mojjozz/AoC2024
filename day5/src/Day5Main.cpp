@@ -6,7 +6,7 @@ int main() {
 	namespace fs = std::filesystem;
 	fs::path projectRoot = fs::current_path().parent_path().parent_path();
 	fs::current_path(projectRoot);
-	std::ifstream file("day5/resources/Example.txt");
+	std::ifstream file("day5/resources/realinput.txt");
 
     if (!file) {
         std::cerr << "Error while reading file";
@@ -34,12 +34,10 @@ int main() {
         }
     }
 
-    for(auto p : rules) {
-        std::cout << "pair: " << p.first << " : " << p.second << std::endl;
+    int totalNumber = 0;
+    for(auto line: lines){
+        totalNumber += checkUpdateAndAdd(rules, line);
     }
-
-    for(std::string line : lines) {
-        std::cout << "Line: " << line << std::endl;
-    }
+    std::cout << "totalNumber: " << totalNumber << std::endl;
     return 0;
 }
